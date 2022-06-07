@@ -1,1 +1,1 @@
-# stipop-reactnative-sdk
+# stipop-react-native-sdk
