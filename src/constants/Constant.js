@@ -1,0 +1,2 @@
+export const TEXT_INPUT_VIEW_HEIGHT = 40;
+export const TEXT_CONTAINER_VIEW_HEIGHT = 40 + 16;
