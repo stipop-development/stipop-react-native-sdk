@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {
   View,
   useWindowDimensions,
@@ -36,8 +36,8 @@ switch (Platform.OS) {
     break;
 
   case 'ios':
-    // const {StipopEmitter} = NativeModules;
-    // nativeEventEmitter = new NativeEventEmitter(StipopEmitter);
+    const {StipopEmitter} = NativeModules;
+    nativeEventEmitter = new NativeEventEmitter(StipopEmitter);
     break;
 }
 
@@ -59,69 +59,64 @@ const TypingView = ({
   var stickerSingleTapListener = null;
   var stickerDoubleTapListener = null;
 
+  const refTextInput = useRef(null);
+
   const keyboardListenerInit = () => {
     keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', event => {
       setKeyboardVisible(true);
     });
     keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', event => {
       setKeyboardVisible(false);
-
-      switch (Platform.OS) {
-        case 'android':
-          setIsStipopShowing(false);
-          break;
-
-        case 'ios':
-          break;
-      }
+      setIsStipopShowing(false);
     });
   };
 
-  const keyboardListenerRemove = () => {
-    keyboardDidHideListener.remove();
-    keyboardDidShowListener.remove();
+  const tapListenerInit = () => {
+    stickerSingleTapListener = nativeEventEmitter.addListener(
+      'onStickerSingleTapped',
+      event => {
+        console.log('Single tapped');
+        const stickerImg = event.stickerImg;
+        sendMessage({
+          type: 'EMOTICON_ME',
+          value: stickerImg,
+          setText: setText,
+          setData: setData,
+          setIndexID: setIndexID,
+        });
+      },
+    );
+    stickerDoubleTapListener = nativeEventEmitter.addListener(
+      'onStickerDoubleTapped',
+      event => {
+        console.log('Double tapped');
+        const stickerImg = event.stickerImg;
+        sendMessage({
+          type: 'EMOTICON_ME',
+          value: stickerImg,
+          setText: setText,
+          setData: setData,
+          setIndexID: setIndexID,
+        });
+      },
+    );
   };
 
-  const tapListenerInit = () => {
-    switch (Platform.OS) {
-      case 'android':
-        stickerSingleTapListener = nativeEventEmitter.addListener(
-          'onStickerSingleTapped',
-          event => {
-            console.log('Single tapped');
-            const stickerImg = event.stickerImg;
-            sendMessage({
-              type: 'EMOTICON_ME',
-              value: stickerImg,
-              setText: setText,
-              setData: setData,
-              setIndexID: setIndexID,
-            });
-          },
-        );
-        stickerDoubleTapListener = nativeEventEmitter.addListener(
-          'onStickerDoubleTapped',
-          event => {
-            console.log('Double tapped');
-            const stickerImg = event.stickerImg;
-            sendMessage({
-              type: 'EMOTICON_ME',
-              value: stickerImg,
-              setText: setText,
-              setData: setData,
-              setIndexID: setIndexID,
-            });
-          },
-        );
-        break;
+  const keyboardListenerRemove = () => {
+    if (keyboardDidHideListener != null) {
+      keyboardDidHideListener.remove();
+    }
+    if (keyboardDidShowListener != null) {
+      keyboardDidShowListener.remove();
     }
   };
 
   const tapListenerRemove = () => {
-    switch (Platform.OS) {
-      case 'android':
-        stickerSingleTapListener.remove();
-        stickerDoubleTapListener.remove();
+    if (stickerSingleTapListener != null) {
+      stickerSingleTapListener.remove();
+    }
+    if (stickerDoubleTapListener != null) {
+      stickerDoubleTapListener.remove();
     }
   };
 
@@ -139,9 +134,9 @@ const TypingView = ({
     });
 
     return () => {
+      stipopRemove();
       keyboardListenerRemove();
       tapListenerRemove();
-      stipopRemove();
     };
   }, []);
 
@@ -161,6 +156,7 @@ const TypingView = ({
         isOn={isStipopShowing}
         onPressOut={() => {
           stipopShowAndHide({
+            refTextInput,
             isKeyboardVisible,
             isStipopShowing,
             setIsStipopShowing,
@@ -173,6 +169,12 @@ const TypingView = ({
           height={TEXT_INPUT_VIEW_HEIGHT}
           value={text}
           onChangeText={setText}
+          ref={refTextInput}
+          onFocus={() => {
+            if (Platform.OS == 'ios') {
+              setIsStipopShowing(false);
+            }
+          }}
           onSubmitEditing={() => {
             sendMessage({
               type: 'TEXT_ME',

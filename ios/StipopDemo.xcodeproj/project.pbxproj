@@ -12,6 +12,10 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		5F4768F2287C772400AE6279 /* StipopModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4768EF287C772400AE6279 /* StipopModule.swift */; };
+		5F4768F3287C772400AE6279 /* StipopEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4768F0287C772400AE6279 /* StipopEmitter.swift */; };
+		5F4768F4287C772400AE6279 /* StipopModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4768F1287C772400AE6279 /* StipopModule.m */; };
+		5F4768F6287C775F00AE6279 /* Stipop.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F4768F5287C775F00AE6279 /* Stipop.plist */; };
 		7699B88040F8A987B510C191 /* libPods-StipopDemo-StipopDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-StipopDemo-StipopDemoTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -41,6 +45,10 @@
 		5709B34CF0A7D63546082F79 /* Pods-StipopDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StipopDemo.release.xcconfig"; path = "Target Support Files/Pods-StipopDemo/Pods-StipopDemo.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-StipopDemo-StipopDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StipopDemo-StipopDemoTests.debug.xcconfig"; path = "Target Support Files/Pods-StipopDemo-StipopDemoTests/Pods-StipopDemo-StipopDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-StipopDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StipopDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F4768EF287C772400AE6279 /* StipopModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StipopModule.swift; sourceTree = "<group>"; };
+		5F4768F0287C772400AE6279 /* StipopEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StipopEmitter.swift; sourceTree = "<group>"; };
+		5F4768F1287C772400AE6279 /* StipopModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StipopModule.m; sourceTree = "<group>"; };
+		5F4768F5287C775F00AE6279 /* Stipop.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Stipop.plist; path = ../../../../../../../plist_json/plist/demo/Stipop.plist; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = StipopDemo/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-StipopDemo-StipopDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StipopDemo-StipopDemoTests.release.xcconfig"; path = "Target Support Files/Pods-StipopDemo-StipopDemoTests/Pods-StipopDemo-StipopDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -86,10 +94,12 @@
 		13B07FAE1A68108700A75B9A /* StipopDemo */ = {
 			isa = PBXGroup;
 			children = (
+				5F476902287D07CC00AE6279 /* Stipop */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
+				5F4768F5287C775F00AE6279 /* Stipop.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
@@ -104,6 +114,16 @@
 				19F6CBCC0A4E27FBF8BF4A61 /* libPods-StipopDemo-StipopDemoTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5F476902287D07CC00AE6279 /* Stipop */ = {
+			isa = PBXGroup;
+			children = (
+				5F4768F0287C772400AE6279 /* StipopEmitter.swift */,
+				5F4768F1287C772400AE6279 /* StipopModule.m */,
+				5F4768EF287C772400AE6279 /* StipopModule.swift */,
+			);
+			name = Stipop;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -207,7 +227,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1340;
 					};
 				};
 			};
@@ -243,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				5F4768F6287C775F00AE6279 /* Stipop.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,6 +433,9 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				5F4768F2287C772400AE6279 /* StipopModule.swift in Sources */,
+				5F4768F4287C772400AE6279 /* StipopModule.m in Sources */,
+				5F4768F3287C772400AE6279 /* StipopEmitter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +454,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-StipopDemo-StipopDemoTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -457,6 +482,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-StipopDemo-StipopDemoTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = StipopDemoTests/Info.plist;

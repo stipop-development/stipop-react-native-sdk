@@ -1,6 +1,6 @@
 import React from 'react';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {View, useWindowDimensions, Platform, Keyboard} from 'react-native';
+import {View, useWindowDimensions} from 'react-native';
 import MainBackgroundImage from '../../assets/images/main_background.png';
 import StipopTextLogoImage from '../../assets/images/stipop_text_logo.png';
 import GoToDocsButton from '../components/GoToDocsButton';
@@ -29,7 +29,6 @@ const navigateToChat = (navigation, type) => {
 
 const Main = ({navigation}) => {
   const screenWidth = useWindowDimensions().width;
-  Keyboard.dismiss();
 
   return (
     <OuterContainer>

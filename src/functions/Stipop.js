@@ -1,62 +1,38 @@
 import {NativeModules, Platform} from 'react-native';
 const {StipopModule} = NativeModules;
 
-export const stipopConfigure = () => {
-  switch (Platform.OS) {
-    case 'android':
-      break;
-    case 'ios':
-      // StipopModule.configure();
-      break;
-  }
-};
-
 export const stipopConnect = userID => {
-  switch (Platform.OS) {
-    case 'android':
-      StipopModule.connect(userID);
-      break;
-
-    case 'ios':
-      // StipopModule.connect(userID);
-      break;
-  }
+  StipopModule.connect(userID);
 };
 
 export const stipopShowAndHide = ({
+  refTextInput,
   isKeyboardVisible,
   isStipopShowing,
   setIsStipopShowing,
 }) => {
   switch (Platform.OS) {
     case 'android':
+      refTextInput.current.focus();
       StipopModule.show(isKeyboardVisible, isStipopShowing, resultBool => {
         setIsStipopShowing(resultBool);
       });
       break;
 
     case 'ios':
-    // switch (isStipopShowing) {
-    //   case true:
-    //     StipopModule.hide();
-    //     setIsStipopShowing(false);
-    //     break;
-
-    //   case false:
-    //     StipopModule.show(300);
-    //     setIsStipopShowing(true);
-    //     break;
-    // }
+      StipopModule.show(
+        isKeyboardVisible,
+        isStipopShowing,
+        (error, resultBool) => {
+          setIsStipopShowing(resultBool);
+        },
+      );
+      break;
   }
 };
 
 export const stipopRemove = () => {
-  switch (Platform.OS) {
-    case 'android':
-      break;
-
-    case 'ios':
-      // StipopModule.hide();
-      break;
+  if (Platform.OS == 'ios') {
+    StipopModule.remove();
   }
 };

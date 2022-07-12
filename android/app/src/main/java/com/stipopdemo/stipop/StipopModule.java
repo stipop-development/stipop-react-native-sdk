@@ -26,17 +26,14 @@ public class StipopModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void show(Boolean isKeyboardVisible, Boolean isStipopShowing, Callback callback){
 
-        Integer keyboardHeight = Stipop.Companion.getCurrentKeyboardHeight();
-
         getReactApplicationContext().getCurrentActivity().runOnUiThread(new Runnable(){
-
             @Override
             public void run() {
                 Stipop.Companion.show();
             }
         });
 
-        if(keyboardHeight > 0){
+        if(isKeyboardVisible){
             if(isStipopShowing){
                 callback.invoke(false);
             } else {
