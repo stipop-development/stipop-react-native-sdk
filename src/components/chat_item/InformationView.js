@@ -10,6 +10,7 @@ import {stipopShowAndHide} from '../../functions/Stipop';
 
 const InformationView = ({
   value,
+  refTextInput,
   isKeyboardVisible,
   isStipopShowing,
   setIsStipopShowing,
@@ -18,6 +19,7 @@ const InformationView = ({
     <TouchableOpacity
       onPress={() => {
         stipopShowAndHide({
+          refTextInput: refTextInput,
           isKeyboardVisible: isKeyboardVisible,
           isStipopShowing: isStipopShowing,
           setIsStipopShowing: setIsStipopShowing,

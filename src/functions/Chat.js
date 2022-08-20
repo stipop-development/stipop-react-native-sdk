@@ -3,51 +3,37 @@ export const sendMessage = ({
   value,
   setText,
   setData,
-  setIndexID,
+  refTextInput,
   isKeyboardVisible,
   isStipopShowing,
   setIsStipopShowing,
 }) => {
   if (value != '') {
-    setIndexID(indexID => {
-      var newIndexID = indexID + 1;
+    setData(data => {
+      var indexID = data.length;
+
       var item = {
-        id: newIndexID,
+        id: indexID,
         type: type,
         value: value,
+        refTextInput: refTextInput,
         isKeyboardVisible: isKeyboardVisible,
         isStipopShowing: isStipopShowing,
         setIsStipopShowing: setIsStipopShowing,
       };
-
-      if (type === 'TEXT_ME') {
-        setText('');
-      }
-
-      setData(data => {
-        var dataArr = [];
-
-        if (data.length != 0) {
-          if (item.id != data[data.length - 1].id) {
-            dataArr = [...data, item];
-          } else {
-            dataArr = data;
-          }
-          return dataArr;
-        } else {
-          return [...data, item];
-        }
-      });
-
-      return newIndexID;
+      return [...data, item];
     });
+
+    if (type === 'TEXT_ME') {
+      setText('');
+    }
   }
 };
 
 export const sendInitialMessage = ({
   setText,
   setData,
-  setIndexID,
+  refTextInput,
   isKeyboardVisible,
   isStipopShowing,
   setIsStipopShowing,
@@ -61,7 +47,6 @@ export const sendInitialMessage = ({
     value: 'HEADER',
     setText: setText,
     setData: setData,
-    setIndexID: setIndexID,
   });
 
   // 1. Hi, there,
@@ -70,7 +55,6 @@ export const sendInitialMessage = ({
     value: 'Hi, there! 👋<',
     setText: setText,
     setData: setData,
-    setIndexID: setIndexID,
   });
 
   // 2. Tubby emoticon.
@@ -79,7 +63,6 @@ export const sendInitialMessage = ({
     value: 'https://img.stipop.io/2020/3/31/1585719674256_CookieArrow_size.gif',
     setText: setText,
     setData: setData,
-    setIndexID: setIndexID,
   });
 
   // 3. Welcome message.
@@ -89,7 +72,6 @@ export const sendInitialMessage = ({
     Press the button below to get started.`,
     setText: setText,
     setData: setData,
-    setIndexID: setIndexID,
   });
 
   // 4. Try the sticker feature.
@@ -98,7 +80,7 @@ export const sendInitialMessage = ({
     value: 'Try the sticker feature. 🔽',
     setText: setText,
     setData: setData,
-    setIndexID: setIndexID,
+    refTextInput: refTextInput,
     isKeyboardVisible: isKeyboardVisible,
     isStipopShowing: isStipopShowing,
     setIsStipopShowing: setIsStipopShowing,

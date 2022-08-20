@@ -22,9 +22,9 @@ const Chat = ({navigation, route}) => {
 
   const [text, setText] = useState('');
   const [data, setData] = useState([]);
-  const [indexID, setIndexID] = useState(0);
   const [typingViewMarginBottom, setTypingViewMarginBottom] = useState(0);
 
+  const refTextInput = useRef(null);
   const refMessageList = useRef(null);
 
   var keyboardWillShowListener = null;
@@ -81,18 +81,17 @@ const Chat = ({navigation, route}) => {
       <NavigationBar navigation={navigation} name={'Tubby'} isActive={true} />
       <MessageList
         data={data}
-        extraData={indexID}
         renderItem={renderItem}
         keyExtractor={item => String(item.id)}
         ref={refMessageList}
         onContentSizeChange={() => refMessageList.current.scrollToEnd()}
       />
       <TypingView
+        refTextInput={refTextInput}
         userID={userID}
         text={text}
         setText={setText}
         setData={setData}
-        setIndexID={setIndexID}
         marginBottom={typingViewMarginBottom}
       />
     </Container>

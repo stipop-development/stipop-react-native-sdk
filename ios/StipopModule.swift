@@ -16,8 +16,12 @@ class StipopModule: NSObject {
   
   static let eventEmitter = RCTEventEmitter()
   
+//  static let semaphore = DispatchSemaphore(value: 1)  // For using SAuth user.
+  
   override init(){
     super.init()
+//    *setSAuthDelegate() should be typed before initialize()
+//    Stipop.setSAuthDelegate(sAuthDelegate: self)  // For using SAuth user.
     Stipop.initialize()
   }
   
@@ -60,7 +64,7 @@ class StipopModule: NSObject {
 extension StipopModule: SPUIDelegate {
   
   func onStickerSingleTapped(_ view: SPUIView, sticker: SPSticker) {
-    print("Stipop : onStickerSingleTapped")
+    print("⚡️Stipop : onStickerSingleTapped")
     
     var stickerDict = [String: Any]()
     stickerDict["packageId"] = sticker.packageId
@@ -72,7 +76,7 @@ extension StipopModule: SPUIDelegate {
   }
   
   func onStickerDoubleTapped(_ view: SPUIView, sticker: SPSticker) {
-    print("Stipop : onStickerDoubleTapped")
+    print("⚡️Stipop : onStickerDoubleTapped")
     
     var stickerDict = [String: Any]()
     stickerDict["packageId"] = sticker.packageId
@@ -83,3 +87,21 @@ extension StipopModule: SPUIDelegate {
     StipopEmitter.shared?.sendEvent(withName: "onStickerDoubleTapped", body: stickerDict)
   }
 }
+
+/* If you use SAuth, implement SAuthDelegate and refresh accessToken when authorization error occured. */
+/*
+extension StipopModule: SAuthDelegate {
+    func httpError(apiEnum: SPAPIEnum, error: SPError) {
+        print("⚡️Stipop: HTTP Error => \(apiEnum)")
+        DispatchQueue.global().async {
+            StipopModule.semaphore.wait()
+            DemoSAuthManager.getAccessTokenIfOverExpiryTime(userId: Stipop.getUser().userID, completion: { accessToken in
+              StipopModule.semaphore.signal()
+                guard let accessToken = accessToken else { return }
+                Stipop.setAccessToken(accessToken: accessToken)
+                SAuthManager.reRequest(api: apiEnum)
+            })
+        }
+    }
+}
+*/

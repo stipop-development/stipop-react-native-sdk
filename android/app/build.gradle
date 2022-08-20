@@ -1,4 +1,5 @@
 apply plugin: "com.android.application"
+apply plugin: 'kotlin-android'  // For kotlin.
 
 import com.android.build.OutputFile
 import org.apache.tools.ant.taskdefs.condition.Os
@@ -288,11 +289,19 @@ dependencies {
         implementation jscFlavor
     }
     /* If your application's min API level is under 21, use 0.7.4 version. */
-    implementation 'com.github.stipop-development:stipop-android-sdk:0.8.0'
+    implementation 'com.github.stipop-development:stipop-android-sdk:0.9.3-beta.4'
+    // If you want to use SAuth, you should implement 'retrofit'.
+    implementation "com.squareup.retrofit2:retrofit:2.6.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.6.0"
+    implementation 'com.squareup.okhttp3:okhttp:4.9.2'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.2'
     // This makes your emoticon move.
     implementation 'com.facebook.fresco:animated-gif:2.5.0'
     // You should use 'MaterialComponents' style theme.
     implementation 'com.google.android.material:material:1.6.1'
+    // This is for kotlin.
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.21"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
 }
 
 if (isNewArchitectureEnabled()) {

@@ -20,6 +20,7 @@ const ChatItemView = ({item}) => {
       return (
         <InformationView
           value={item.value}
+          refTextInput={item.refTextInput}
           isKeyboardVisible={item.isKeyboardVisible}
           isStipopShowing={item.isStipopShowing}
           setIsStipopShowing={item.setIsStipopShowing}

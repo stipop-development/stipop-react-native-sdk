@@ -42,11 +42,11 @@ switch (Platform.OS) {
 }
 
 const TypingView = ({
+  refTextInput,
   userID,
   text,
   setText,
   setData,
-  setIndexID,
   marginBottom,
 }) => {
   const screenWidth = useWindowDimensions().width;
@@ -58,8 +58,6 @@ const TypingView = ({
 
   var stickerSingleTapListener = null;
   var stickerDoubleTapListener = null;
-
-  const refTextInput = useRef(null);
 
   const keyboardListenerInit = () => {
     keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', event => {
@@ -82,7 +80,6 @@ const TypingView = ({
           value: stickerImg,
           setText: setText,
           setData: setData,
-          setIndexID: setIndexID,
         });
       },
     );
@@ -96,7 +93,6 @@ const TypingView = ({
           value: stickerImg,
           setText: setText,
           setData: setData,
-          setIndexID: setIndexID,
         });
       },
     );
@@ -127,7 +123,7 @@ const TypingView = ({
     sendInitialMessage({
       setText: setText,
       setData: setData,
-      setIndexID: setIndexID,
+      refTextInput: refTextInput,
       isKeyboardVisible: isKeyboardVisible,
       isStipopShowing: isStipopShowing,
       setIsStipopShowing: setIsStipopShowing,
@@ -181,7 +177,6 @@ const TypingView = ({
               value: text,
               setText: setText,
               setData: setData,
-              setIndexID: setIndexID,
             });
           }}
         />
@@ -197,7 +192,6 @@ const TypingView = ({
               value: text,
               setText: setText,
               setData: setData,
-              setIndexID: setIndexID,
             });
           }}
         />
