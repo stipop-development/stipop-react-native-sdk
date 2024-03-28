@@ -362,7 +362,7 @@ PODS:
     - React-Core
     - React-RCTImage
   - SocketRocket (0.6.0)
-  - StipopUIKit (0.9.3)
+  - StipopUIKit (0.9.11)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -427,7 +427,7 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNScreens (from `../node_modules/react-native-screens`)
-  - StipopUIKit (= 0.9.3)
+  - StipopUIKit (= 0.9.11)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -572,10 +572,10 @@ SPEC CHECKSUMS:
   RNGestureHandler: bad495418bcbd3ab47017a38d93d290ebd406f50
   RNScreens: 4a1af06327774490d97342c00aee0c2bafb497b7
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
-  StipopUIKit: ad4495d773575641ab747a0100592ba010f7d41d
+  StipopUIKit: 80574fe8aff59af913ef1c21b01029c1854119fd
   Yoga: 99652481fcd320aefa4a7ef90095b95acd181952
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: fcf6bf33681afc51e510ea3caa4df179a892085d
+PODFILE CHECKSUM: d0e4b8db5a14740b35a0a56d642774def4dee55e
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.13.0

@@ -18,7 +18,7 @@
 		5F6E58FB28AE563F0087F3F7 /* DemoSAuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E58FA28AE563F0087F3F7 /* DemoSAuthAPI.swift */; };
 		5F6E58FD28AE564C0087F3F7 /* DemoSAuthAPI_access_token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E58FC28AE564C0087F3F7 /* DemoSAuthAPI_access_token.swift */; };
 		5F6E58FF28AE56530087F3F7 /* DemoSAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E58FE28AE56530087F3F7 /* DemoSAuthManager.swift */; };
-		5F72991D28B0BBE800E3AFC4 /* Stipop.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F72991C28B0BBE800E3AFC4 /* Stipop.plist */; };
+		5F9CD59C2BB4FE1E00CDA3FC /* Stipop.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F9CD59B2BB4FE1E00CDA3FC /* Stipop.plist */; };
 		7699B88040F8A987B510C191 /* libPods-StipopDemo-StipopDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-StipopDemo-StipopDemoTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -54,7 +54,7 @@
 		5F6E58FA28AE563F0087F3F7 /* DemoSAuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSAuthAPI.swift; sourceTree = "<group>"; };
 		5F6E58FC28AE564C0087F3F7 /* DemoSAuthAPI_access_token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSAuthAPI_access_token.swift; sourceTree = "<group>"; };
 		5F6E58FE28AE56530087F3F7 /* DemoSAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSAuthManager.swift; sourceTree = "<group>"; };
-		5F72991C28B0BBE800E3AFC4 /* Stipop.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Stipop.plist; path = ../../../../../../plist_json/plist/demo/sauth_false/Stipop.plist; sourceTree = "<group>"; };
+		5F9CD59B2BB4FE1E00CDA3FC /* Stipop.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Stipop.plist; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = StipopDemo/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-StipopDemo-StipopDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StipopDemo-StipopDemoTests.release.xcconfig"; path = "Target Support Files/Pods-StipopDemo-StipopDemoTests/Pods-StipopDemo-StipopDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -105,7 +105,7 @@
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
-				5F72991C28B0BBE800E3AFC4 /* Stipop.plist */,
+				5F9CD59B2BB4FE1E00CDA3FC /* Stipop.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
@@ -280,7 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
-				5F72991D28B0BBE800E3AFC4 /* Stipop.plist in Resources */,
+				5F9CD59C2BB4FE1E00CDA3FC /* Stipop.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -476,12 +476,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 2R37F73YB9;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = StipopDemoTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -505,8 +506,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 2R37F73YB9;
 				INFOPLIST_FILE = StipopDemoTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -530,8 +532,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2R37F73YB9;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = StipopDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -556,7 +560,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2R37F73YB9;
 				INFOPLIST_FILE = StipopDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -622,7 +628,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",
@@ -686,7 +691,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",
